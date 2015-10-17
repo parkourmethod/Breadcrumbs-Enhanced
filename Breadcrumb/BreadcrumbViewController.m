@@ -256,16 +256,16 @@
                 _crumbPathRenderer = nil;
                 [self.map addOverlay:self.crumbs level:MKOverlayLevelAboveRoads];
                 
-                MKMapRect r = self.crumbs.boundingMapRect;
-                MKMapPoint pts[] = {
-                    MKMapPointMake(MKMapRectGetMinX(r), MKMapRectGetMinY(r)),
-                    MKMapPointMake(MKMapRectGetMinX(r), MKMapRectGetMaxY(r)),
-                    MKMapPointMake(MKMapRectGetMaxX(r), MKMapRectGetMaxY(r)),
-                    MKMapPointMake(MKMapRectGetMaxX(r), MKMapRectGetMinY(r)),
-                };
-                NSUInteger count = sizeof(pts) / sizeof(pts[0]);
-                MKPolygon *boundingMapRectOverlay = [MKPolygon polygonWithPoints:pts count:count];
-                [self.map addOverlay:boundingMapRectOverlay level:MKOverlayLevelAboveRoads];
+    //            MKMapRect r = self.crumbs.boundingMapRect;
+    //            MKMapPoint pts[] = {
+    //                MKMapPointMake(MKMapRectGetMinX(r), MKMapRectGetMinY(r)),
+    //                MKMapPointMake(MKMapRectGetMinX(r), MKMapRectGetMaxY(r)),
+    //                MKMapPointMake(MKMapRectGetMaxX(r), MKMapRectGetMaxY(r)),
+    //                MKMapPointMake(MKMapRectGetMaxX(r), MKMapRectGetMinY(r)),
+    //            };
+    //            NSUInteger count = sizeof(pts) / sizeof(pts[0]);
+    //            MKPolygon *boundingMapRectOverlay = [MKPolygon polygonWithPoints:pts count:count];
+    //            [self.map addOverlay:boundingMapRectOverlay level:MKOverlayLevelAboveRoads];
             }
             else if (!MKMapRectIsNull(updateRect))
             {
