@@ -17,12 +17,5 @@
 @property CLLocationCoordinate2D currentLocation;
 @property CLLocation *position;
 
-@property (weak, nonatomic) IBOutlet UILabel *Indoors;
-@property (weak, nonatomic) IBOutlet UILabel *Outdoors;
-@property (weak, nonatomic) IBOutlet UILabel *VerifiedIndoors;
-@property (weak, nonatomic) IBOutlet UILabel *Total;
-@property (weak, nonatomic) IBOutlet UILabel *Rate;
-@property (weak, nonatomic) IBOutlet UILabel *TrackingType;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *Reset;
 @end
 

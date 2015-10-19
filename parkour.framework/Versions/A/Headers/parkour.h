@@ -12,7 +12,7 @@
 
 
 #import "PKConstants.h"
-#define theParkourSDKVersion 2088
+#define theParkourSDKVersion 2053
 
 
 @interface parkour : NSObject

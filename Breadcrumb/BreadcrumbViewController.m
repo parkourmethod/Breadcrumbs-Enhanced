@@ -26,13 +26,6 @@
 @property (nonatomic, strong) MKPolygonRenderer *drawingAreaRenderer;   // shown if kDebugShowArea is set to 1
 
 @property (nonatomic, weak) IBOutlet MKMapView *map;
-@property (nonatomic) double Ind;
-@property (nonatomic) double Out;
-@property (nonatomic) double Vin;
-@property (nonatomic) double Tot;
-@property (nonatomic) double Rat;
-@property (nonatomic) bool FirstRun;
-@property (nonatomic, strong) NSDate *startdate;
 
 //@property (nonatomic, strong) CLLocationManager *locationManager;
 
@@ -45,26 +38,6 @@
 #pragma mark -
 
 @implementation BreadcrumbViewController
-- (IBAction)Reset:(id)sender {
-    
-     _startdate = [NSDate date];
-    _Ind = 0; // _Ind +1;
-    _Out = 0; //_Out +1;
-    _Vin = 0; //_Vin +1;
-    _Tot = 0; //_Tot + 1;
-    double blah = 0;
-    self.Indoors.text = [NSString stringWithFormat:@"Ind: %.0f",blah];
-    self.Outdoors.text = [NSString stringWithFormat:@"Out: %.0f",blah];
-    self.VerifiedIndoors.text = [NSString stringWithFormat:@"Vin: %.0f",blah];
-    self.Total.text = [NSString stringWithFormat:@"Tot: %.0f",blah];
-    self.Rate.text = [NSString stringWithFormat:@"Rate/s: %.1f",blah];
-
-    
-
-}
-
-
-
 
 // called for NSUserDefaultsDidChangeNotification
 - (void)settingsDidChange:(NSNotification *)notification
@@ -78,35 +51,6 @@
 //    self.locationManager.desiredAccuracy = desiredAccuracy;
     
     [parkour setTrackPositionMode:[settings doubleForKey:LocationTrackingAccuracyPrefsKey]];
-    
-    NSString *positionmode = @"nada";
-
-    int themode = [settings doubleForKey:LocationTrackingAccuracyPrefsKey];
-    switch (themode) {
-        case 0:
-            positionmode = @"LowEnergy 120";
-            break;
-        case 1:
-            positionmode = @"Geofencing 60";
-            break;
-        case 2:
-            positionmode = @"Pedestrian 10";
-            break;
-        case 3:
-            positionmode = @"Fitness 7";
-            break;
-        case 4:
-            positionmode = @"Automotive 5";
-            break;
-        case 5:
-            positionmode = @"Share 45";
-            break;
-        default:
-            positionmode = @"Default";
-    }
-
-    
-    self.TrackingType.text = [NSString stringWithFormat:@"%@",positionmode];
 
     // note:
     // for "PlaySoundOnLocationUpdatePrefsKey", code to play the sound later will read this default value
@@ -121,12 +65,7 @@
     [super viewDidLoad];
     
     //Corrected spelling on "initilizeAudioPlayer"
-
-    if (!_FirstRun) {
-    _startdate = [NSDate date];
-        _FirstRun = TRUE;
-    }
-
+    
     [self initializeAudioPlayer];
 //    [self initilizeLocationTracking];
     [self initializeTrackingAndConfigureMap];
@@ -265,22 +204,6 @@
     [parkour setTrackPositionMode:[[NSUserDefaults standardUserDefaults] doubleForKey:LocationTrackingAccuracyPrefsKey]];
     [parkour trackPositionWithHandler:^(CLLocation *position, PKPositionType positionType, PKMotionType motionType)
      {
-         if (positionType == pkIndoors) _Ind = _Ind +1;
-         if (positionType == pkOutdoors) _Out = _Out +1;
-         if (positionType == pkVerifiedIndoors) _Vin = _Vin +1;
-         _Tot = _Tot + 1;
-
-         self.Indoors.text = [NSString stringWithFormat:@"Ind: %.0f",_Ind];
-         self.Outdoors.text = [NSString stringWithFormat:@"Out: %.0f",_Out];
-         self.VerifiedIndoors.text = [NSString stringWithFormat:@"Vin: %.0f",_Vin];
-         self.Total.text = [NSString stringWithFormat:@"Tot: %.0f",_Tot];
-         double elapsed = fabs( [_startdate timeIntervalSince1970] - [[NSDate date] timeIntervalSince1970]);
-      //   NSLog(@"elapased: %f",elapsed);
-         
-         self.Rate.text = [NSString stringWithFormat:@"Rate/s: %.1f",(_Tot/elapsed)];
-
-         
-         
 //         NSLog(@"tracking lat %f and lng %f", position.coordinate.latitude, position.coordinate.longitude);
          NSLog(@"You are currently %ld", (long)motionType);
          self.currentLocation = position.coordinate;
@@ -362,7 +285,7 @@
               
 //              MKPinAnnotationView *parkourPin = [self returnPointView:position.coordinate andTitle:[NSString stringWithFormat:@"%@",fullAddress] andsubtitle:[NSString stringWithFormat:@"%@",categoryOne] andColor:MKPinAnnotationColorPurple];
               MKPointAnnotation *parkourPin = [[MKPointAnnotation alloc] init];
-              parkourPin.coordinate = POIPosition.coordinate;
+              parkourPin.coordinate = position.coordinate;
               parkourPin.title = [NSString stringWithFormat:@"%@ %@",POIName, categoryTwo];
               parkourPin.subtitle = [NSString stringWithFormat:@"%@",fullAddress];
               

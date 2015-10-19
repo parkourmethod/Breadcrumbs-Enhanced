@@ -11,7 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <AdSupport/ASIdentifierManager.h>
 
-#define aSDKVersion 2088
+#define aSDKVersion 2053
 
 
 

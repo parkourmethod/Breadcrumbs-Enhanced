@@ -3,14 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="YGz-3V-aW0">
             <objects>
                 <navigationController definesPresentationContext="YES" id="zTX-DL-25k" sceneMemberID="viewController">
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="568"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="eee-Y9-8EF">
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
@@ -36,104 +35,36 @@
                         <viewControllerLayoutGuide type="bottom" id="WhR-sB-JAa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Muf-dM-GwT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H4e-m3-ava">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="570"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H4e-m3-ava">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <animations/>
                                 <connections>
                                     <outlet property="delegate" destination="xyY-FW-LrY" id="hjl-dp-vaj"/>
                                 </connections>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yaj-fh-nhK">
-                                <rect key="frame" x="118" y="72" width="90" height="21"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                <color key="textColor" red="0.57587236166000366" green="0.81628090143203735" blue="0.91843771934509277" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIj-wO-Gly">
-                                <rect key="frame" x="215" y="95" width="90" height="21"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDT-rs-sr9">
-                                <rect key="frame" x="215" y="72" width="90" height="21"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.95093668193717273" blue="0.18276639675642456" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4J-Ex-iCH">
-                                <rect key="frame" x="118" y="95" width="90" height="21"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zd0-ET-Cfb">
-                                <rect key="frame" x="20" y="72" width="90" height="21"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fitness" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chg-no-uDD">
-                                <rect key="frame" x="21" y="95" width="89" height="21"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="H4e-m3-ava" firstAttribute="top" secondItem="Muf-dM-GwT" secondAttribute="top" id="FFd-i4-avc"/>
-                            <constraint firstItem="H4e-m3-ava" firstAttribute="leading" secondItem="Muf-dM-GwT" secondAttribute="leading" id="IdE-8o-38I"/>
-                            <constraint firstAttribute="trailing" secondItem="H4e-m3-ava" secondAttribute="trailing" id="bJJ-mR-dpN"/>
-                            <constraint firstItem="H4e-m3-ava" firstAttribute="bottom" secondItem="WhR-sB-JAa" secondAttribute="top" id="wtk-O4-Cud"/>
+                            <constraint firstItem="H4e-m3-ava" firstAttribute="top" secondItem="sDb-AE-38F" secondAttribute="bottom" constant="-64" id="2ay-xU-QEb"/>
+                            <constraint firstItem="H4e-m3-ava" firstAttribute="leading" secondItem="Muf-dM-GwT" secondAttribute="leadingMargin" constant="-16" id="BOe-pl-80w"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H4e-m3-ava" secondAttribute="trailing" constant="-16" id="Wjd-0k-mh9"/>
+                            <constraint firstItem="WhR-sB-JAa" firstAttribute="top" secondItem="H4e-m3-ava" secondAttribute="bottom" id="dnd-EG-N4c"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Breadcrumb" id="byg-n4-Vch">
-                        <barButtonItem key="leftBarButtonItem" title="Reset" id="mhq-JY-gSB">
-                            <connections>
-                                <action selector="Reset:" destination="xyY-FW-LrY" id="gQ2-BZ-tiH"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="7OT-pU-HbP">
                             <connections>
                                 <segue destination="2Oz-dt-Iqd" kind="push" id="7ct-V4-XGF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="568"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="Indoors" destination="zd0-ET-Cfb" id="tSk-Ou-EXZ"/>
-                        <outlet property="Outdoors" destination="Yaj-fh-nhK" id="Uso-Oo-ti1"/>
-                        <outlet property="Rate" destination="NIj-wO-Gly" id="TuX-nB-498"/>
-                        <outlet property="Reset" destination="mhq-JY-gSB" id="n51-YT-Bxs"/>
-                        <outlet property="Total" destination="f4J-Ex-iCH" id="hhW-BQ-75o"/>
-                        <outlet property="TrackingType" destination="chg-no-uDD" id="fyt-tj-i9P"/>
-                        <outlet property="VerifiedIndoors" destination="dDT-rs-sr9" id="3Am-eL-kzl"/>
                         <outlet property="map" destination="H4e-m3-ava" id="Api-K9-klM"/>
                         <outlet property="view" destination="Muf-dM-GwT" id="Tfg-sA-6rF"/>
                     </connections>
@@ -147,7 +78,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2Oz-dt-Iqd" customClass="SettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="n7Z-F2-ERB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -264,8 +195,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="7IU-9i-BfW"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="568"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gXc-Nh-lNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

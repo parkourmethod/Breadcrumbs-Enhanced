@@ -229,7 +229,7 @@ NSString * const PickerOptionCellID = @"PickerOptionTableViewCell"; // generic p
             accuracyValue = pkLowEnergy;
             break;
     }
- //   NSLog(@"The current TrackingMode is %ld", (long)accuracyValue);
+    NSLog(@"The current TrackingMode is %ld", (long)accuracyValue);
     
     return @{kAccuracyTitleKey: title, kAccuracyValueKey: [NSNumber numberWithDouble:accuracyValue]};
 }
