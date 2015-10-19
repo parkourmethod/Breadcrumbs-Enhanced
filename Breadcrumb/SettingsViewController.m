@@ -17,6 +17,7 @@ NSString * const PlaySoundOnLocationUpdatePrefsKey  = @"PlaySoundOnLocationUpdat
 NSString * const SwitchOptionCellID = @"SwitchOptionTableViewCell"; // generic switch cell
 NSString * const PickerOptionCellID = @"PickerOptionTableViewCell"; // generic picker cell
 
+CLLocationAccuracy chosenAccuracy = 3;
 
 #pragma mark -
 
@@ -127,6 +128,8 @@ NSString * const PickerOptionCellID = @"PickerOptionTableViewCell"; // generic p
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, copy) NSString *defaultsKey;
 
+//@property CLLocationAccuracy chosenAccuracy;
+
 @end
 
 
@@ -172,7 +175,7 @@ NSString * const PickerOptionCellID = @"PickerOptionTableViewCell"; // generic p
 
     [self.pickerView selectRow:row inComponent:0 animated:NO];
     
-    NSLog(@"%@", self.defaultsKey);
+//    NSLog(@"%@", self.defaultsKey);
 }
 
 // returns the number of 'columns' to display on the picker
@@ -229,7 +232,7 @@ NSString * const PickerOptionCellID = @"PickerOptionTableViewCell"; // generic p
             accuracyValue = pkLowEnergy;
             break;
     }
-    NSLog(@"The current TrackingMode is %ld", (long)accuracyValue);
+//    NSLog(@"The current TrackingMode is %ld", (long)accuracyValue);
     
     return @{kAccuracyTitleKey: title, kAccuracyValueKey: [NSNumber numberWithDouble:accuracyValue]};
 }
@@ -260,13 +263,14 @@ NSString * const PickerOptionCellID = @"PickerOptionTableViewCell"; // generic p
 {
     // find the accuracy value from the selected row
     NSDictionary *resultDict = [self accuracyTitleAndValueForRow:row];
-    CLLocationAccuracy accuracy = [resultDict[kAccuracyValueKey] doubleValue];
+//    CLLocationAccuracy accuracy = [resultDict[kAccuracyValueKey] doubleValue];
+    chosenAccuracy = [resultDict[kAccuracyValueKey] doubleValue];
     
     // this will cause an NSNotification to occur (NSUserDefaultsDidChangeNotification)
     // ultimately calling BreadcrumbViewController - (void)settingsDidChange:(NSNotification *)notification
     //
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:accuracy forKey:LocationTrackingAccuracyPrefsKey];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults setInteger:accuracy forKey:LocationTrackingAccuracyPrefsKey];
 }
 
 @end
@@ -280,12 +284,15 @@ NSString * const PickerOptionCellID = @"PickerOptionTableViewCell"; // generic p
 
 @end
 
-
 @implementation SettingsViewController
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+//    PickerOptionTableViewCell *pickerCell = [[PickerOptionTableViewCell alloc] init];
+//    chosenAccuracy = 3;
     
     self.settings = @[
                       [SwitchOption withHeadline:NSLocalizedString(@"Background Updates:", @"Label for switch that enables and disables background updates")
@@ -348,6 +355,17 @@ NSString * const PickerOptionCellID = @"PickerOptionTableViewCell"; // generic p
     }
     
     return cell;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSUInteger ind = [[self.navigationController viewControllers] indexOfObject:self];
+    if (ind == NSNotFound)
+    {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setInteger:chosenAccuracy forKey:LocationTrackingAccuracyPrefsKey];
+        NSLog(@"Left the view");
+    }
 }
 
 @end

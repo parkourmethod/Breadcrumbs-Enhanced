@@ -20,4 +20,6 @@ NSString * const LocationTrackingAccuracyPrefsKey;
 // value is a BOOL
 NSString * const PlaySoundOnLocationUpdatePrefsKey;
 
+extern NSInteger GlobalInt;
+
 #endif

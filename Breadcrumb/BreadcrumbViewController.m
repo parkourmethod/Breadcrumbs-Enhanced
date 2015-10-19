@@ -28,6 +28,8 @@
 @property (nonatomic, weak) IBOutlet MKMapView *map;
 
 //@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *leftBarItem;
+@property (nonatomic, strong) UILabel *trackTypeLabel;
 
 //@property CLLocationCoordinate2D currentLocation;
 //@property CLLocation *position;
@@ -51,6 +53,36 @@
 //    self.locationManager.desiredAccuracy = desiredAccuracy;
     
     [parkour setTrackPositionMode:[settings doubleForKey:LocationTrackingAccuracyPrefsKey]];
+    
+    NSString *positionmode = @"nada";
+    
+    int themode = [settings doubleForKey:LocationTrackingAccuracyPrefsKey];
+    switch (themode) {
+        case 0:
+            positionmode = @"LowEnergy 120";
+            break;
+        case 1:
+            positionmode = @"Geofencing 60";
+            break;
+        case 2:
+            positionmode = @"Pedestrian 10";
+            break;
+        case 3:
+            positionmode = @"Fitness 7";
+            break;
+        case 4:
+            positionmode = @"Automotive 5";
+            break;
+        case 5:
+            positionmode = @"Share 45";
+            break;
+        default:
+            positionmode = @"Default";
+    }
+    
+    NSLog(@"Settings have changed");
+    self.trackTypeLabel.text = [NSString stringWithFormat:@"%@",positionmode];
+    [self.trackTypeLabel sizeToFit];
 
     // note:
     // for "PlaySoundOnLocationUpdatePrefsKey", code to play the sound later will read this default value
@@ -63,6 +95,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // barButtonItem -> UILabel
+    self.trackTypeLabel = [[UILabel alloc] init];
+    self.trackTypeLabel.text = @"Default";
+    self.trackTypeLabel.font = [UIFont systemFontOfSize:16];
+    [self.trackTypeLabel setBackgroundColor:[UIColor clearColor]];
+//    self.trackTypeLabel.textColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    self.trackTypeLabel.textColor = [UIColor greenColor];
+    [self.trackTypeLabel sizeToFit];
+    self.leftBarItem.customView = self.trackTypeLabel;
     
     //Corrected spelling on "initilizeAudioPlayer"
     
@@ -205,7 +247,7 @@
     [parkour trackPositionWithHandler:^(CLLocation *position, PKPositionType positionType, PKMotionType motionType)
      {
 //         NSLog(@"tracking lat %f and lng %f", position.coordinate.latitude, position.coordinate.longitude);
-         NSLog(@"You are currently %ld", (long)motionType);
+//         NSLog(@"You are currently %ld", (long)motionType);
          self.currentLocation = position.coordinate;
          self.position = position;
      
@@ -281,11 +323,11 @@
           }
          [parkour trackPOIWithHandler:^(NSString *POIName, NSString *categoryOne, NSString *categoryTwo, NSString *fullAddress, NSString *city, NSString *state, NSString *zipcode, CLLocation *POIPosition, CLLocation *userPosition, double distance)
           {
-              NSLog(@"Tracking Points of Intrest: POIName %@, categoryOne %@, categoryTwo %@, fullAddress %@, city %@, state %@, zipcode %@, POIPosition %@, userPosition %@, distance %f", POIName, categoryOne, categoryTwo, fullAddress, city, state, zipcode, POIPosition, userPosition, distance);
+              NSLog(@"Tracking Points of Interest: POIName %@, categoryOne %@, categoryTwo %@, fullAddress %@, city %@, state %@, zipcode %@, POIPosition %@, userPosition %@, distance %f", POIName, categoryOne, categoryTwo, fullAddress, city, state, zipcode, POIPosition, userPosition, distance);
               
 //              MKPinAnnotationView *parkourPin = [self returnPointView:position.coordinate andTitle:[NSString stringWithFormat:@"%@",fullAddress] andsubtitle:[NSString stringWithFormat:@"%@",categoryOne] andColor:MKPinAnnotationColorPurple];
               MKPointAnnotation *parkourPin = [[MKPointAnnotation alloc] init];
-              parkourPin.coordinate = position.coordinate;
+              parkourPin.coordinate = POIPosition.coordinate;
               parkourPin.title = [NSString stringWithFormat:@"%@ %@",POIName, categoryTwo];
               parkourPin.subtitle = [NSString stringWithFormat:@"%@",fullAddress];
               

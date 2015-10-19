@@ -9,6 +9,9 @@
  */
 
 @import UIKit;
+@import MapKit;
+
+extern CLLocationAccuracy chosenAccuracy;
 
 @interface SettingsViewController : UITableViewController
 

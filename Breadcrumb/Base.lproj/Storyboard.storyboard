@@ -41,9 +41,6 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H4e-m3-ava">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <animations/>
-                                <connections>
-                                    <outlet property="delegate" destination="xyY-FW-LrY" id="hjl-dp-vaj"/>
-                                </connections>
                             </mapView>
                         </subviews>
                         <animations/>
@@ -57,6 +54,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Breadcrumb" id="byg-n4-Vch">
+                        <barButtonItem key="leftBarButtonItem" title="TrackMode" id="nK4-Mm-Kbd"/>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="7OT-pU-HbP">
                             <connections>
                                 <segue destination="2Oz-dt-Iqd" kind="push" id="7ct-V4-XGF"/>
@@ -65,6 +63,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="leftBarItem" destination="nK4-Mm-Kbd" id="f7i-2w-SoS"/>
                         <outlet property="map" destination="H4e-m3-ava" id="Api-K9-klM"/>
                         <outlet property="view" destination="Muf-dM-GwT" id="Tfg-sA-6rF"/>
                     </connections>
@@ -108,14 +107,14 @@
                                                 <constraint firstAttribute="width" constant="72" id="4tE-mt-UZI"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Details Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="ioO-Ac-hnd">
                                             <rect key="frame" x="20" y="193" width="280" height="12"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -147,14 +146,14 @@
                                             <rect key="frame" x="20" y="15" width="280" height="17"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Wcn-vZ-48y">
                                             <rect key="frame" x="20" y="79" width="280" height="12"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="grx-xE-3on">
