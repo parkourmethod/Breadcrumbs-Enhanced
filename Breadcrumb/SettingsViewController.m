@@ -9,7 +9,7 @@
 
 @import MapKit;
 
-NSString * const TrackLocationInBackgroundPrefsKey  = @"TrackLocationInBackgroundPrefsKey"; // BOOL
+//NSString * const TrackLocationInBackgroundPrefsKey  = @"TrackLocationInBackgroundPrefsKey"; // BOOL
 NSString * const LocationTrackingAccuracyPrefsKey   = @"LocationTrackingAccuracyPrefsKey";  // CLLocationAccuracy (double)
 NSString * const PlaySoundOnLocationUpdatePrefsKey  = @"PlaySoundOnLocationUpdatePrefsKey"; // BOOL
 
@@ -45,7 +45,6 @@ CLLocationAccuracy chosenAccuracy = 3;
 }
 
 @end
-
 
 #pragma mark -
 
@@ -174,8 +173,6 @@ CLLocationAccuracy chosenAccuracy = 3;
     }
 
     [self.pickerView selectRow:row inComponent:0 animated:NO];
-    
-//    NSLog(@"%@", self.defaultsKey);
 }
 
 // returns the number of 'columns' to display on the picker
@@ -232,8 +229,6 @@ CLLocationAccuracy chosenAccuracy = 3;
             accuracyValue = pkLowEnergy;
             break;
     }
-//    NSLog(@"The current TrackingMode is %ld", (long)accuracyValue);
-    
     return @{kAccuracyTitleKey: title, kAccuracyValueKey: [NSNumber numberWithDouble:accuracyValue]};
 }
 
@@ -292,12 +287,11 @@ CLLocationAccuracy chosenAccuracy = 3;
     [super viewDidLoad];
     
 //    PickerOptionTableViewCell *pickerCell = [[PickerOptionTableViewCell alloc] init];
-//    chosenAccuracy = 3;
-    
     self.settings = @[
-                      [SwitchOption withHeadline:NSLocalizedString(@"Background Updates:", @"Label for switch that enables and disables background updates")
-                                         details:NSLocalizedString(@"Turn on/off tracking current location while suspended.", @"Description for switch that enables and disables background updates")
-                                     defaultsKey:TrackLocationInBackgroundPrefsKey],
+                      //Background mode is handled automatically by the PK framework.
+//                      [SwitchOption withHeadline:NSLocalizedString(@"Background Updates:", @"Label for switch that enables and disables background updates")
+//                                         details:NSLocalizedString(@"Turn on/off tracking current location while suspended.", @"Description for switch that enables and disables background updates")
+//                                     defaultsKey:TrackLocationInBackgroundPrefsKey],
                       
                       [AccuracyPickerOption withHeadline:@"Accuracy:"
                                          details:NSLocalizedString(@"Set level of accuracy when tracking your location.", @"Description for accuracy")

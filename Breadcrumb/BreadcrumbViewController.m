@@ -31,9 +31,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *leftBarItem;
 @property (nonatomic, strong) UILabel *trackTypeLabel;
 
-//@property CLLocationCoordinate2D currentLocation;
-//@property CLLocation *position;
-
 @end
 
 
@@ -51,37 +48,36 @@
     // accuracy (CLLocationAccuracy)
 //    CLLocationAccuracy desiredAccuracy = [settings doubleForKey:LocationTrackingAccuracyPrefsKey];
 //    self.locationManager.desiredAccuracy = desiredAccuracy;
-    
     [parkour setTrackPositionMode:[settings doubleForKey:LocationTrackingAccuracyPrefsKey]];
     
-    NSString *positionmode = @"nada";
+    NSString *positionMode = @"nada";
     
-    int themode = [settings doubleForKey:LocationTrackingAccuracyPrefsKey];
-    switch (themode) {
+    int theMode = [settings doubleForKey:LocationTrackingAccuracyPrefsKey];
+    switch (theMode) {
         case 0:
-            positionmode = @"LowEnergy 120";
+            positionMode = @"LowEnergy 120";
             break;
         case 1:
-            positionmode = @"Geofencing 60";
+            positionMode = @"Geofencing 60";
             break;
         case 2:
-            positionmode = @"Pedestrian 10";
+            positionMode = @"Pedestrian 10";
             break;
         case 3:
-            positionmode = @"Fitness 7";
+            positionMode = @"Fitness 7";
             break;
         case 4:
-            positionmode = @"Automotive 5";
+            positionMode = @"Automotive 5";
             break;
         case 5:
-            positionmode = @"Share 45";
+            positionMode = @"Share 45";
             break;
         default:
-            positionmode = @"Default";
+            positionMode = @"Default";
     }
     
     NSLog(@"Settings have changed");
-    self.trackTypeLabel.text = [NSString stringWithFormat:@"%@",positionmode];
+    self.trackTypeLabel.text = [NSString stringWithFormat:@"%@",positionMode];
     [self.trackTypeLabel sizeToFit];
 
     // note:
@@ -98,15 +94,12 @@
     
     // barButtonItem -> UILabel
     self.trackTypeLabel = [[UILabel alloc] init];
-    self.trackTypeLabel.text = @"Default";
+    self.trackTypeLabel.text = @"Fitness";
     self.trackTypeLabel.font = [UIFont systemFontOfSize:16];
     [self.trackTypeLabel setBackgroundColor:[UIColor clearColor]];
-//    self.trackTypeLabel.textColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
     self.trackTypeLabel.textColor = [UIColor greenColor];
     [self.trackTypeLabel sizeToFit];
     self.leftBarItem.customView = self.trackTypeLabel;
-    
-    //Corrected spelling on "initilizeAudioPlayer"
     
     [self initializeAudioPlayer];
 //    [self initilizeLocationTracking];
@@ -210,11 +203,6 @@
 //    {
 //        [self.locationManager startUpdatingLocation];
 //    }
-    
-    
-    
-    
-    
 //}
 
 - (MKCoordinateRegion)coordinateRegionWithCenter:(CLLocationCoordinate2D)centerCoordinate approximateRadiusInMeters:(CLLocationDistance)radiusInMeters
@@ -243,14 +231,9 @@
 //    {
 - (void)initializeTrackingAndConfigureMap
 {
-    [parkour setTrackPositionMode:[[NSUserDefaults standardUserDefaults] doubleForKey:LocationTrackingAccuracyPrefsKey]];
     [parkour trackPositionWithHandler:^(CLLocation *position, PKPositionType positionType, PKMotionType motionType)
      {
 //         NSLog(@"tracking lat %f and lng %f", position.coordinate.latitude, position.coordinate.longitude);
-//         NSLog(@"You are currently %ld", (long)motionType);
-         self.currentLocation = position.coordinate;
-         self.position = position;
-     
         if ([[NSUserDefaults standardUserDefaults] boolForKey:PlaySoundOnLocationUpdatePrefsKey])
         {
             [self setSessionActiveWithMixing:YES]; // YES == duck if other audio is playing
@@ -290,7 +273,7 @@
             //
             BOOL boundingMapRectChanged = NO;
             MKMapRect updateRect = [self.crumbs addCoordinate:position.coordinate boundingMapRectChanged:&boundingMapRectChanged];
-            if (boundingMapRectChanged && motionType == pkOutdoors)
+            if (boundingMapRectChanged)
             {
                 // MKMapView expects an overlay's boundingMapRect to never change (it's a readonly @property).
                 // So for the MapView to recognize the overlay's size has changed, we remove it, then add it again.
@@ -321,60 +304,22 @@
                 [self.crumbPathRenderer setNeedsDisplayInMapRect:updateRect];
             }
           }
-         [parkour trackPOIWithHandler:^(NSString *POIName, NSString *categoryOne, NSString *categoryTwo, NSString *fullAddress, NSString *city, NSString *state, NSString *zipcode, CLLocation *POIPosition, CLLocation *userPosition, double distance)
-          {
-              NSLog(@"Tracking Points of Interest: POIName %@, categoryOne %@, categoryTwo %@, fullAddress %@, city %@, state %@, zipcode %@, POIPosition %@, userPosition %@, distance %f", POIName, categoryOne, categoryTwo, fullAddress, city, state, zipcode, POIPosition, userPosition, distance);
-              
-//              MKPinAnnotationView *parkourPin = [self returnPointView:position.coordinate andTitle:[NSString stringWithFormat:@"%@",fullAddress] andsubtitle:[NSString stringWithFormat:@"%@",categoryOne] andColor:MKPinAnnotationColorPurple];
-              MKPointAnnotation *parkourPin = [[MKPointAnnotation alloc] init];
-              parkourPin.coordinate = POIPosition.coordinate;
-              parkourPin.title = [NSString stringWithFormat:@"%@ %@",POIName, categoryTwo];
-              parkourPin.subtitle = [NSString stringWithFormat:@"%@",fullAddress];
-              
-              [self.map addAnnotation:parkourPin];
-          }];
         }];
+    [parkour setTrackPositionMode:[[NSUserDefaults standardUserDefaults] doubleForKey:LocationTrackingAccuracyPrefsKey]];
+    [parkour trackPOIWithHandler:^(NSString *POIName, NSString *categoryOne, NSString *categoryTwo, NSString *fullAddress, NSString *city, NSString *state, NSString *zipcode, CLLocation *POIPosition, CLLocation *userPosition, double distance)
+     {
+         NSLog(@"Tracking Points of Interest: POIName %@, categoryOne %@, categoryTwo %@, fullAddress %@, city %@, state %@, zipcode %@, POIPosition %@, userPosition %@, distance %f", POIName, categoryOne, categoryTwo, fullAddress, city, state, zipcode, POIPosition, userPosition, distance);
+         
+         // Pin for POIPosition
+         MKPointAnnotation *parkourPin = [[MKPointAnnotation alloc] init];
+         parkourPin.coordinate = POIPosition.coordinate;
+         parkourPin.title = [NSString stringWithFormat:@"%@ %@",POIName, categoryTwo];
+         parkourPin.subtitle = [NSString stringWithFormat:@"%@",fullAddress];
+         
+         [self.map addAnnotation:parkourPin];
+     }];
 
 }
-
-//-(MKPinAnnotationView*) returnPointView:(CLLocationCoordinate2D) location2D andTitle:(NSString*) title andsubtitle:(NSString*) subtitle andColor: (int) color
-//{
-//    MKPointAnnotation *pointAnnotation = [[MKPointAnnotation alloc] init];
-//    MKPinAnnotationView *pinAnnotation = [[MKPinAnnotationView alloc] initWithAnnotation:pointAnnotation reuseIdentifier:nil];
-//    [pointAnnotation setCoordinate:location2D];
-//    pointAnnotation.title = title;
-//    pointAnnotation.subtitle = subtitle;
-//    pinAnnotation.pinColor = color;
-//    
-//    return pinAnnotation;
-//}
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
-{
-    // If it's the user location, just return nil.
-    if ([annotation isKindOfClass:[MKUserLocation class]])
-        return nil;
-    
-    // Handle any custom annotations.
-    if ([annotation isKindOfClass:[MKPointAnnotation class]])
-    {
-        MKPinAnnotationView *pinView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
-        if (!pinView)
-        {
-            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinAnnotationView"];
-            pinView.canShowCallout = YES;
-            pinView.pinColor = MKPinAnnotationColorGreen;
-        } else {
-            pinView.annotation = annotation;
-        }
-        return pinView;
-    }
-    return nil;
-}
-
-//    }
-//}
-
 //- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 //{
 //    NSLog(@"%s:%d %@", __func__, __LINE__, error);

@@ -19,13 +19,16 @@
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Run this asap
+    [parkour start];
+    
     // it is important to registerDefaults as soon as possible,
     // because it can change so much of how your app behaves
     //
     NSMutableDictionary *defaultsDictionary = [[NSMutableDictionary alloc] init];
     
     // by default we track the user location while in the background
-    [defaultsDictionary setObject:@YES forKey:TrackLocationInBackgroundPrefsKey];
+//    [defaultsDictionary setObject:@YES forKey:TrackLocationInBackgroundPrefsKey];
     
     // by default we use the best accuracy setting (kCLLocationAccuracyBest)
     [defaultsDictionary setObject:@(pkFitness) forKey:LocationTrackingAccuracyPrefsKey];
@@ -34,8 +37,6 @@
     [defaultsDictionary setObject:@YES forKey:PlaySoundOnLocationUpdatePrefsKey];
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsDictionary];
-    
-    [parkour start];
 
     return YES;
 }

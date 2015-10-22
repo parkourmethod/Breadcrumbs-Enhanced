@@ -73,7 +73,6 @@
 - (CLLocationCoordinate2D)coordinate
 {
     __block CLLocationCoordinate2D centerCoordinate;
-    self.breadVC.currentLocation = centerCoordinate;
     [self readPointsWithBlockAndWait:^(MKMapPoint *pointsArray, NSUInteger pointsCount) {
         centerCoordinate = MKCoordinateForMapPoint(pointsArray[0]);
     }];

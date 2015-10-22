@@ -12,14 +12,12 @@
 #define Breadcrumb_SettingsKeys_h
 
 // value is a BOOL
-NSString * const TrackLocationInBackgroundPrefsKey;
+//NSString * const TrackLocationInBackgroundPrefsKey;
 
 // value is a CLLocationAccuracy (double)
 NSString * const LocationTrackingAccuracyPrefsKey;
 
 // value is a BOOL
-NSString * const PlaySoundOnLocationUpdatePrefsKey;
-
-extern NSInteger GlobalInt;
+NSString * const PlaySoundOnLocationUpdatePrefsKey; 
 
 #endif

@@ -14,8 +14,5 @@
 
 @interface BreadcrumbViewController : UIViewController
 
-@property CLLocationCoordinate2D currentLocation;
-@property CLLocation *position;
-
 @end
 

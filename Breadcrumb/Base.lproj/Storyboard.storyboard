@@ -82,8 +82,57 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SetIntervalTableViewCell" rowHeight="105" id="BJa-H9-J6M" customClass="SetIntervalTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="105"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BJa-H9-J6M" id="rl1-ea-6IA">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="104.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Description Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lcp-cr-fMU">
+                                            <rect key="frame" x="20" y="15" width="280" height="16.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Wcn-vZ-48y">
+                                            <rect key="frame" x="20" y="79" width="280" height="12"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z2B-8r-Tae">
+                                            <rect key="frame" x="100.5" y="38" width="120" height="30"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="DlV-sF-DvJ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="z2B-8r-Tae" firstAttribute="centerX" secondItem="rl1-ea-6IA" secondAttribute="centerX" id="8nk-ne-prS"/>
+                                        <constraint firstAttribute="bottom" secondItem="z2B-8r-Tae" secondAttribute="bottom" constant="36.5" id="I7Z-zm-Sw2"/>
+                                        <constraint firstAttribute="trailing" secondItem="Lcp-cr-fMU" secondAttribute="trailing" constant="20" id="Phf-9e-QOr"/>
+                                        <constraint firstItem="Lcp-cr-fMU" firstAttribute="leading" secondItem="rl1-ea-6IA" secondAttribute="leading" constant="20" id="QII-Jv-o5e"/>
+                                        <constraint firstItem="Wcn-vZ-48y" firstAttribute="top" secondItem="z2B-8r-Tae" secondAttribute="bottom" constant="11" id="Sfd-gh-BHG"/>
+                                        <constraint firstItem="Wcn-vZ-48y" firstAttribute="leading" secondItem="rl1-ea-6IA" secondAttribute="leading" constant="20" id="i4c-31-Wrn"/>
+                                        <constraint firstAttribute="trailing" secondItem="Wcn-vZ-48y" secondAttribute="trailing" constant="20" id="iCf-Hx-C9R"/>
+                                        <constraint firstItem="z2B-8r-Tae" firstAttribute="top" secondItem="Lcp-cr-fMU" secondAttribute="bottom" constant="6" id="kx6-j1-Kpc"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <outlet property="detailsLabel" destination="Wcn-vZ-48y" id="bvc-Zu-Jes"/>
+                                    <outlet property="titleLabel" destination="Lcp-cr-fMU" id="iIG-fr-mgt"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PickerOptionTableViewCell" rowHeight="213" id="iTZ-hb-zvV" customClass="PickerOptionTableViewCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="213"/>
+                                <rect key="frame" x="0.0" y="191" width="320" height="213"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iTZ-hb-zvV" id="F6z-VV-6LP">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="212.5"/>
@@ -135,56 +184,56 @@
                                     <outlet property="titleLabel" destination="YBh-mO-vY8" id="Q8g-Dd-VKS"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SwitchOptionTableViewCell" rowHeight="105" id="BJa-H9-J6M" customClass="SwitchOptionTableViewCell">
-                                <rect key="frame" x="0.0" y="299" width="320" height="105"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SwitchOptionTableViewCell" rowHeight="105" id="qDP-gC-XYz" customClass="SwitchOptionTableViewCell">
+                                <rect key="frame" x="0.0" y="404" width="320" height="105"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BJa-H9-J6M" id="rl1-ea-6IA">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qDP-gC-XYz" id="4FK-1X-cvc">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="104.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Description Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lcp-cr-fMU">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Description Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="PoZ-tj-k8b">
                                             <rect key="frame" x="20" y="15" width="280" height="17"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Wcn-vZ-48y">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="DjZ-Hj-WRa">
                                             <rect key="frame" x="20" y="79" width="280" height="12"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="grx-xE-3on">
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PV7-9q-Anw">
                                             <rect key="frame" x="136" y="40" width="51" height="31"/>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="31" id="5qd-15-Nxb"/>
-                                                <constraint firstAttribute="width" constant="49" id="E0E-iP-zJ2"/>
+                                                <constraint firstAttribute="width" constant="49" id="87T-Qf-xN1"/>
+                                                <constraint firstAttribute="height" constant="31" id="LVM-0A-Cvk"/>
                                             </constraints>
                                             <connections>
-                                                <action selector="toggleSwitch:" destination="BJa-H9-J6M" eventType="touchUpInside" id="x9C-K6-RCb"/>
+                                                <action selector="toggleSwitch:" destination="qDP-gC-XYz" eventType="touchUpInside" id="OQu-9s-Ue4"/>
                                             </connections>
                                         </switch>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Lcp-cr-fMU" secondAttribute="trailing" constant="20" id="Phf-9e-QOr"/>
-                                        <constraint firstItem="Lcp-cr-fMU" firstAttribute="leading" secondItem="rl1-ea-6IA" secondAttribute="leading" constant="20" id="QII-Jv-o5e"/>
-                                        <constraint firstItem="grx-xE-3on" firstAttribute="top" secondItem="rl1-ea-6IA" secondAttribute="top" constant="40" id="dsw-XS-aMe"/>
-                                        <constraint firstItem="Wcn-vZ-48y" firstAttribute="leading" secondItem="rl1-ea-6IA" secondAttribute="leading" constant="20" id="i4c-31-Wrn"/>
-                                        <constraint firstAttribute="trailing" secondItem="Wcn-vZ-48y" secondAttribute="trailing" constant="20" id="iCf-Hx-C9R"/>
-                                        <constraint firstItem="grx-xE-3on" firstAttribute="top" secondItem="Lcp-cr-fMU" secondAttribute="bottom" constant="8" id="lyN-TX-JIH"/>
-                                        <constraint firstItem="grx-xE-3on" firstAttribute="centerX" secondItem="Wcn-vZ-48y" secondAttribute="centerX" id="v52-pj-RJ2"/>
-                                        <constraint firstItem="Wcn-vZ-48y" firstAttribute="top" secondItem="grx-xE-3on" secondAttribute="bottom" constant="8" id="v9H-tm-aei"/>
+                                        <constraint firstItem="PV7-9q-Anw" firstAttribute="top" secondItem="PoZ-tj-k8b" secondAttribute="bottom" constant="8" id="ENh-5d-Rta"/>
+                                        <constraint firstItem="PV7-9q-Anw" firstAttribute="top" secondItem="4FK-1X-cvc" secondAttribute="top" constant="40" id="Rel-OK-idr"/>
+                                        <constraint firstItem="DjZ-Hj-WRa" firstAttribute="leading" secondItem="4FK-1X-cvc" secondAttribute="leading" constant="20" id="UK5-AT-4f5"/>
+                                        <constraint firstAttribute="trailing" secondItem="PoZ-tj-k8b" secondAttribute="trailing" constant="20" id="j8s-L5-2Pe"/>
+                                        <constraint firstItem="PV7-9q-Anw" firstAttribute="centerX" secondItem="DjZ-Hj-WRa" secondAttribute="centerX" id="p80-yy-ZWA"/>
+                                        <constraint firstAttribute="trailing" secondItem="DjZ-Hj-WRa" secondAttribute="trailing" constant="20" id="ukb-ym-LoO"/>
+                                        <constraint firstItem="PoZ-tj-k8b" firstAttribute="leading" secondItem="4FK-1X-cvc" secondAttribute="leading" constant="20" id="vUW-Gc-huG"/>
+                                        <constraint firstItem="DjZ-Hj-WRa" firstAttribute="top" secondItem="PV7-9q-Anw" secondAttribute="bottom" constant="8" id="wBH-o2-WOn"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="detailsLabel" destination="Wcn-vZ-48y" id="bvc-Zu-Jes"/>
-                                    <outlet property="switchControl" destination="grx-xE-3on" id="qh4-do-M4n"/>
-                                    <outlet property="titleLabel" destination="Lcp-cr-fMU" id="iIG-fr-mgt"/>
+                                    <outlet property="detailsLabel" destination="DjZ-Hj-WRa" id="ucI-Ay-daf"/>
+                                    <outlet property="switchControl" destination="PV7-9q-Anw" id="148-hI-129"/>
+                                    <outlet property="titleLabel" destination="PoZ-tj-k8b" id="4D8-Cb-qDT"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
