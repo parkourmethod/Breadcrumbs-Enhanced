@@ -2,7 +2,7 @@
 
 sample app discussed at www.parkourmethod.com and docs.parkourmethod.com
 
-This is a transformation of Apple's original breadcrumb sample project provided to developers. We've modified the original app by integrating the parkour method location framework, and by adding additional features making it easier for you to understand the operating modes of the parkour location framework.
+This is an upgraded version of Apple's breadcrumb sample project. We've modified the original sample project by integrating the parkour method location framework, and added features making it easier to demonstrate the operating modes of the parkour location framework.
 
 If you have any questions please contact us at: team@parkourmethod.com
 
