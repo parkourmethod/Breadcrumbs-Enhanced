@@ -55,22 +55,22 @@
     int theMode = [settings doubleForKey:LocationTrackingAccuracyPrefsKey];
     switch (theMode) {
         case 0:
-            positionMode = @"LowEnergy 120";
+            positionMode = @"LowEnergy";
             break;
         case 1:
-            positionMode = @"Geofencing 60";
+            positionMode = @"Geofencing";
             break;
         case 2:
-            positionMode = @"Pedestrian 10";
+            positionMode = @"Pedestrian";
             break;
         case 3:
-            positionMode = @"Fitness 7";
+            positionMode = @"Fitness";
             break;
         case 4:
-            positionMode = @"Automotive 5";
+            positionMode = @"Automotive";
             break;
         case 5:
-            positionMode = @"Share 45";
+            positionMode = @"Share";
             break;
         default:
             positionMode = @"Default";
